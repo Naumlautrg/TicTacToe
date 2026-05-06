@@ -3,18 +3,12 @@
 
 class Random
 {
-protected:
-
+private:
 	std::mt19937 gen;
 
-
 public:
-
 	Random();
 		
-	// min always 0
-	int generateNum(int max);
-	
-
+	int generateNum(int min = 0, int max = INT_MAX - 1);
 };
 

@@ -1,5 +1,5 @@
 #include "TicTacToeGame.h"
-#include "TicTacToeAI.h"
+#include "TicTacToeEngine.h"
 #include "TicTacToeEngineButBetter.h"
 
 void TicTacToeGame::startGame()
@@ -87,7 +87,7 @@ void TicTacToeGame::playGameSimple()
 		gameWon = false;
 		printStartBoard();
 		TicTacToeEngine steve;
-		int firstPlay = steve.generateNum(1);
+		int firstPlay = steve.randomizer.generateNum(1);
 
 
 

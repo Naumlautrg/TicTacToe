@@ -1,4 +1,4 @@
-#include "TicTacToeAI.h"
+#include "TicTacToeEngine.h"
 
 TicTacToeEngine::TicTacToeEngine()
 {
@@ -201,7 +201,6 @@ void TicTacToeEngine::loadPlayerMove(int moveIndex)
 
 bool TicTacToeEngine::checkWinCon(const char playerOrAI)
 {
-
 	// for an ai win check
 	if (toupper(playerOrAI) == 'A')
 	{
@@ -232,7 +231,7 @@ bool TicTacToeEngine::checkWinCon(const char playerOrAI)
 int TicTacToeEngine::generateMove()
 {
 	//generate index of AI move within spotChoices
-	int move = generateNum((spotChoices.size() - 1));
+	int move = randomizer.generateNum(BOARD_SPACES_NUM - 1);
 
 	std::cout << "Hmmmmm.....";
 	std::this_thread::sleep_for(std::chrono::milliseconds(1200));
@@ -266,7 +265,6 @@ int TicTacToeEngine::readPlayerMove()
 		}
 
 		std::cout << "Invalid spot, please pick a spot on the board that has not been chosen\n\n";
-
 	}
 
 	std::cout << "You are really somethin ay?";

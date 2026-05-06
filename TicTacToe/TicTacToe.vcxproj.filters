@@ -21,7 +21,7 @@
     <ClCompile Include="Random.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TicTacToeAI.cpp">
+    <ClCompile Include="TicTacToeEngine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="TicTacToeGame.cpp">
@@ -35,13 +35,16 @@
     <ClInclude Include="Random.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="TicTacToeAI.h">
+    <ClInclude Include="TicTacToeEngine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="TicTacToeGame.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="TicTacToeEngineButBetter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Enums.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

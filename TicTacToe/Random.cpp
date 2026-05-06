@@ -1,13 +1,11 @@
 #include "Random.h"
 
 Random::Random()
-	:gen(std::random_device{}())
-{
-}
+	: gen(std::random_device{}()) {}
 
-int Random::generateNum(int max)
+int Random::generateNum(int min, int max)
 {
-	std::uniform_int_distribution<int> dist(0, max);
+	std::uniform_int_distribution<int> dist(min, max);
 
 	return dist(gen);
 }

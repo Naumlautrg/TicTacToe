@@ -42,7 +42,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v145</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
@@ -129,13 +129,14 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Random.cpp" />
-    <ClCompile Include="TicTacToeAI.cpp" />
+    <ClCompile Include="TicTacToeEngine.cpp" />
     <ClCompile Include="TicTacToeEngineButBetter.cpp" />
     <ClCompile Include="TicTacToeGame.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Enums.h" />
     <ClInclude Include="Random.h" />
-    <ClInclude Include="TicTacToeAI.h" />
+    <ClInclude Include="TicTacToeEngine.h" />
     <ClInclude Include="TicTacToeEngineButBetter.h" />
     <ClInclude Include="TicTacToeGame.h" />
   </ItemGroup>

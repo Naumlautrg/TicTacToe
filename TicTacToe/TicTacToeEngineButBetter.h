@@ -6,8 +6,6 @@
 class TicTacToeEngineButBetter
 {
 private:
-	friend class TicTacToeGame;
-	
 	const char HUMAN = 'O';
 	const char AI = 'X';
 	const char EMPTY = '.';
