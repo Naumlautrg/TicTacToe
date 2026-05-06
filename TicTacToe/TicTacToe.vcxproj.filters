@@ -30,6 +30,9 @@
     <ClCompile Include="TicTacToeEngineButBetter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TicTacToeConstants.h">
+      <Filter>Header Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Random.h">
@@ -44,7 +47,7 @@
     <ClInclude Include="TicTacToeEngineButBetter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Enums.h">
+    <ClInclude Include="TicTacToeEnums.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

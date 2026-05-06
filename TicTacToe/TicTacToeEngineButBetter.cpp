@@ -1,36 +1,28 @@
 #include "TicTacToeEngineButBetter.h"
 #include "Random.h"
-#include <thread>
-#include <chrono>
 
 char TicTacToeEngineButBetter::checkWin()
 {
-    const int winCon[8][3] = {
-        {0,1,2}, {3,4,5}, {6,7,8},
-        {0,3,6}, {1,4,7}, {2,5,8},
-        {0,4,8}, {2,4,6}
-    };
-
     for (auto& line : winCon)
     {
         char a = board[line[0]];
         char b = board[line[1]];
         char c = board[line[2]];
         
-        if (a != EMPTY && a == b && b == c)
+        if (a != TicTacToeConstants::MOVE_EMPTY && a == b && b == c)
         {
             return a;
         }
     }
 
-    return EMPTY;
+    return TicTacToeConstants::MOVE_EMPTY;
 }
 
 bool TicTacToeEngineButBetter::isFull()
 {
     for (char spot : board)
     {
-        if (spot == EMPTY)
+        if (spot == TicTacToeConstants::MOVE_EMPTY)
         {
             return false;
         }        
@@ -45,7 +37,7 @@ std::vector<int> TicTacToeEngineButBetter::getLegalMoves()
 
     for (int i = 0; i < board.size(); ++i)
     {
-        if (board[i] == EMPTY)
+        if (board[i] == TicTacToeConstants::MOVE_EMPTY)
         {
             legalMoves.push_back(i);
         }
@@ -56,7 +48,7 @@ std::vector<int> TicTacToeEngineButBetter::getLegalMoves()
 
 int TicTacToeEngineButBetter::decideFirstPlay()
 {
-    return Random().generateNum(1);
+    return randomizer.generateNum(0, 1);
 }
 
 int TicTacToeEngineButBetter::getBestMove()
@@ -66,9 +58,9 @@ int TicTacToeEngineButBetter::getBestMove()
 
     for (int move : getLegalMoves())
     {
-        board[move] = AI; //load theoretical move to start minimax
+        board[move] = TicTacToeConstants::MOVE_AI; //load theoretical move to start minimax
         int score = minimax(false, 0); // start minimax
-        board[move] = EMPTY; // return to initial condition
+        board[move] = TicTacToeConstants::MOVE_EMPTY; // return to initial condition
 
         if (score > bestScore)
         {
@@ -77,7 +69,7 @@ int TicTacToeEngineButBetter::getBestMove()
         }
     }
 
-    board[bestMove] = AI;
+    board[bestMove] = TicTacToeConstants::MOVE_AI;
 
     return bestMove;
 }
@@ -90,15 +82,13 @@ int TicTacToeEngineButBetter::readPlayerMove()
     {
         int pMove;
 
-        std::cout << "What is your move?  ";
+        std::cout << "What is your move? ";
         std::cin >> pMove;
-
-
 
         auto pMoveIndex = std::find(moves.begin(), moves.end(), (pMove - 1));
         if (pMoveIndex != moves.end())
         {
-            board[(pMove - 1)] = HUMAN;
+            board[(pMove - 1)] = TicTacToeConstants::MOVE_HUMAN;
             return (pMove - 1);
         }
 
@@ -113,12 +103,11 @@ int TicTacToeEngineButBetter::readPlayerMove()
 
 int TicTacToeEngineButBetter::minimax(bool isMaximizing, int depth)
 {
-    
     // when reaching a terminating condition retrun evaluation
     // depth gives weight to fastest wins and slowest losses
     char winner = checkWin();
-    if (winner == AI) { return 10 - depth; }
-    if (winner == HUMAN) { return -10 + depth; }
+    if (winner == TicTacToeConstants::MOVE_AI) { return 10 - depth; }
+    if (winner == TicTacToeConstants::MOVE_HUMAN) { return -10 + depth; }
     if (isFull()) { return 0; }
 
 
@@ -128,9 +117,9 @@ int TicTacToeEngineButBetter::minimax(bool isMaximizing, int depth)
 
         for (int move : getLegalMoves())
         {
-            board[move] = AI; // load theoretical AI move
+            board[move] = TicTacToeConstants::MOVE_AI; // load theoretical AI move
             best = std::max(best, minimax(false, depth + 1)); //start evaluation of said move
-            board[move] = EMPTY; // return board to initial state
+            board[move] = TicTacToeConstants::MOVE_EMPTY; // return board to initial state
         }
 
         return best;
@@ -142,9 +131,9 @@ int TicTacToeEngineButBetter::minimax(bool isMaximizing, int depth)
 
         for (int move : getLegalMoves())
         {
-            board[move] = HUMAN; // load theoretical HUMAN move
+            board[move] = TicTacToeConstants::MOVE_HUMAN; // load theoretical HUMAN move
             best = std::min(best, minimax(true, depth + 1)); //start elav of said move
-            board[move] = EMPTY; // return board to initial state
+            board[move] = TicTacToeConstants::MOVE_EMPTY; // return board to initial state
         }
 
         return best;
